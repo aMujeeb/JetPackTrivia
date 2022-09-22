@@ -1,6 +1,7 @@
 package com.mujapps.jettrivia.di
 
 import com.mujapps.jettrivia.network.QuestionsApi
+import com.mujapps.jettrivia.repository.QuestionsRepository
 import com.mujapps.jettrivia.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -21,4 +22,8 @@ object AppModule {
             .build()
             .create(QuestionsApi::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideQuestionRepository(questionApi: QuestionsApi) = QuestionsRepository(questionApi)
 }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mujapps.jettrivia">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".app.TriviaApp"
         android:fullBackupContent="@xml/backup_rules"

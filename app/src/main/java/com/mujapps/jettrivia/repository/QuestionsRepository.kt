@@ -8,7 +8,20 @@ import javax.inject.Inject
 class QuestionsRepository @Inject constructor(
     private val mQApi: QuestionsApi
 ) {
-    private val mListOfQuestions = DataOrException<ArrayList<Question>,
+    private val mDataOrException = DataOrException<ArrayList<Question>,
             Boolean,
             Exception>()
+
+    suspend fun getAllQuestions(): DataOrException<ArrayList<Question>,
+            Boolean,
+            Exception> {
+        try {
+            mDataOrException.loading = true
+            mDataOrException.data = mQApi.getAllQuestions()
+            mDataOrException.loading = false
+        } catch (e: Exception) {
+            mDataOrException.e = e
+        }
+        return mDataOrException
+    }
 }
