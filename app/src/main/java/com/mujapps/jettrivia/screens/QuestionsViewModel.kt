@@ -39,4 +39,6 @@ class QuestionsViewModel @Inject constructor(
             }
         }
     }
+
+    fun getTotalQuestionsCount() : Int = mData.value.data?.toMutableList()?.size ?: 0
 }
